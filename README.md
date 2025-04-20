@@ -22,13 +22,14 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | name            | string     | null: false                    |
+| description     | text       | null: false                    |
 | category_id     | integer    | null: false                    |
 | status_id       | integer    | null: false                    |
 | delivery_fee_id | integer    | null: false                    |
 | prefecture_id   | integer    | null: false                    |
 | shipping_day_id | integer    | null: false                    |
 | price           | integer    | null: false                    |
-| user_id         | references | null: false, foreign_key: true |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -45,8 +46,8 @@
 
 | Column | Type       | Options                           |
 | ------ | ---------- | --------------------------------- |
-| user_id   | references | null: false, foreign_key: true |
-| item_id   | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -64,7 +65,7 @@
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
-| purchase_id   | references | null: false, foreign_key: true |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 
