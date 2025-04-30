@@ -1,5 +1,8 @@
 ja:
   activerecord:
+    models:
+      user: ユーザー
+      item: 商品
     attributes:
       user:
         nickname: ニックネーム
@@ -8,3 +11,17 @@ ja:
         family_name_kana: 苗字（カナ）
         last_name_kana: 名前（カナ）
         birthday: 生年月日
+      item:
+        name: 商品名
+        description: 商品の説明
+        category_id: カテゴリー
+        status_id: 商品の状態
+        delivery_fee_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        shipping_day_id: 発送までの日数
+        price: 販売価格
+        image: 商品画像
+
+  errors:
+    messages:
+      blank: "を入力してください"
