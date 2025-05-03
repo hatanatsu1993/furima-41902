@@ -21,27 +21,28 @@ class ItemsController < ApplicationController
 
   def show
   end
-  
+
   def edit
     redirect_to root_path unless current_user == @item.user
   end
-    
-def update
-  if @item.update(item_params)
-    redirect_to item_path(@item)
-  else
-    render 'edit', status: :unprocessable_entity
-  end
-end
 
-def destroy
-  if current_user.id == @item.user_id
-  @item.destroy
-  redirect_to root_path
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render 'edit', status: :unprocessable_entity
+    end
   end
-end
+
+  def destroy
+    return unless current_user.id == @item.user_id
+
+    @item.destroy
+    redirect_to root_path
+  end
 
   private
+
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :status_id,
                                  :delivery_fee_id, :prefecture_id, :shipping_day_id, :price, :image)
@@ -51,5 +52,4 @@ end
   def find_params
     @item = Item.find(params[:id])
   end
-
 end
