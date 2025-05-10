@@ -7,7 +7,8 @@ class OrderAddress
     validates :token
     validates :user_id
     validates :item_id
-    validates :postcode, format: { with: /\A\d{3}-\d{4}\z/, message: 'は「3桁ハイフン4桁」の半角文字列形式で入力してください(良い例：123-4567　良くない例：1234567)' }
+    validates :postcode,
+              format: { with: /\A\d{3}-\d{4}\z/, message: 'は「3桁ハイフン4桁」の半角文字列形式で入力してください(良い例：123-4567　良くない例：1234567)' }
   end
 
   validates :prefecture_id, numericality: { other_than: 1, message: 'を入力してください' }
