@@ -56,9 +56,8 @@ class ItemsController < ApplicationController
   end
 
   def redirect_if_not_editable
-    if current_user != @item.user || @item.order.present?
-      redirect_to root_path
-    end
-  end
+    return unless current_user != @item.user || @item.order.present?
 
+    redirect_to root_path
+  end
 end

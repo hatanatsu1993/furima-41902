@@ -13,7 +13,7 @@ RSpec.describe OrderAddress, type: :model do
       phone_number: '09012345678',
       user_id: @user.id,
       item_id: @item.id,
-      token: 'tok_abcdefghijk00000000000000000',
+      token: 'tok_abcdefghijk00000000000000000'
     )
     sleep(0.3)
   end
@@ -25,7 +25,6 @@ RSpec.describe OrderAddress, type: :model do
   end
 
   context '商品出品できない場合' do
-
     it 'userが紐づいていなければ保存できない' do
       @order_address.user_id = nil
       @order_address.valid?
@@ -43,7 +42,7 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include('郵便番号を入力してください')
     end
-  
+
     it '郵便番号が入力されているが、指定の形式と異なる場合は保存できない' do
       @order_address.postcode = '1234567'
       @order_address.valid?
@@ -55,7 +54,7 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include('都道府県を入力してください')
     end
-      
+
     it '市区町村が空では保存できない' do
       @order_address.city = ''
       @order_address.valid?
@@ -78,13 +77,12 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.phone_number = '090-1234-5678'
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include('電話番号は10桁以上11桁以内の半角数値で入力してください(良い例：09012345678　良くない例：090-1234-5678)')
-    end  
-
-    it "クレジットカード情報が空では登録できないこと" do
-      @order_address.token = nil
-      @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("クレジットカード情報を入力してください")
     end
 
+    it 'クレジットカード情報が空では登録できないこと' do
+      @order_address.token = nil
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include('クレジットカード情報を入力してください')
+    end
   end
 end
