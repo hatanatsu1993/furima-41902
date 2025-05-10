@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 ## items テーブル（商品情報）
 
@@ -34,7 +34,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase
+- has_one :order
 
 #### 備考
 
@@ -42,7 +42,7 @@
 ・image は ActiveStorage により別テーブルで管理されるため、ここでは定義しない。
 
 
-## purchases テーブル（購入記録）
+## order テーブル（購入記録）
 
 | Column | Type       | Options                           |
 | ------ | ---------- | --------------------------------- |
@@ -65,11 +65,11 @@
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
-| purchase      | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
 
 #### 備考
 
